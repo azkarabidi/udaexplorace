@@ -51,6 +51,9 @@ class LoginController extends Controller
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
         {
+            $user=User::find(auth()->user()->id);
+            $user->login_times=(intval($user->login_times) + 1);
+            $user->save();
             return redirect()->route('home');
         }else{
             return redirect()->route('login')

@@ -11,4 +11,19 @@ class Group extends Model
     public function user(){
         return $this->HasMany(User::class);
     }
+    public function getCategoryAttribute($value)
+    {
+        if($value == 'U'){
+            return 'UDA';
+        }else if($value == 'P'){
+            return 'Public';
+            
+        }else if($value =='A'){
+
+            return 'Affiliate';
+        }
+    else{
+        return  NULL;
+    }
+}
 }

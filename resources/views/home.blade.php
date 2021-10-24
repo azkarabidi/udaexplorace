@@ -31,14 +31,31 @@
     font-size: 16px;
 }
 </style>
-<div class="card float-right">
-  <div class="card-body"> 
-    <div class="countdown">
-      Timer to end time
-      <span id="clock"></span>
+<div class="row px-3">
+<div class="col-md-6">
+  <a class="decoration-none" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+</div>
+
+<div class="col-md-3 offset-3 text-right">
+  <div class="card ">
+    <div class="card-body"> 
+      <div class="countdown">
+        Timer to end time
+        <span id="clock"></span>
+      </div>
     </div>
-  </div>
-  </div>
+    </div>
+
+</div>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -58,10 +75,31 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                        {{-- //if already have Submission --}}
 
-                    {{ __('You are logged in!') }}
-                        
-                   
+                        @if(!empty(auth()->user()->group))
+                        @if (auth()->user()->group->form_submit == NULL)    
+                        <div data-tf-widget="TO6Gc4DB" style="width:100%;height:400px;"
+                        data-tf-on-submit="submit"
+                        ></div>
+                        <script src="//embed.typeform.com/next/embed.js"></script>
+                        <script>
+                          function submit(event) { // this needs to be available on global scope (window)
+                            console.log(event.response_id)
+                            $.get('{{url('nice')}}',{'_token':'{{csrf_token()}}',respond:event.response_id,user:'{{auth()->user()->id}}'})
+                            // $.post(`{{url('submission/form')}}`,{'_token':'{{csrf_token()}}',respond:event.response_id,user:'{{auth()->user()->id}}'})
+                            .done(function(e){
+                              console.log(e);
+                            })
+                            //ajax post
+                            // done refresh
+                          }
+                        </script>
+                       
+                        @else
+                            <h1 class="text-uppercase">Thank You For Your Submission</h1>
+                        @endif
+                        @endif
                 </div>
             </div>
         </div>

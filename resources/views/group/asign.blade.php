@@ -7,6 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                <h1>{{'U'.str_pad($group->id, 4, "0", STR_PAD_LEFT);}}</h1>
                 <h3 class="card-header">{{$group->id}} &nbsp;{{$group->team_members}} </h3>
                 <div class="card-body">
                     <form method="POST" action="{{route('assign.user')}}">
