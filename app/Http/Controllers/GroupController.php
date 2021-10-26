@@ -121,7 +121,11 @@ class GroupController extends Controller
     }
     public function UpdateGroupForm(Request $request)
     {
-        $user=User::find($request->id);
+        $validated = $request->validate([   
+            'id'=>'required',                
+            'respond'=>'required',                
+    ]);
+        $user=User::findorfail($request->id);
         $user->form=$request->respond;
         $user->save();
         //check group

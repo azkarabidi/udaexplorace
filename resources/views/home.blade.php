@@ -69,6 +69,7 @@
                   @endif
                 </div>
 
+
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -85,11 +86,11 @@
                         <script src="//embed.typeform.com/next/embed.js"></script>
                         <script>
                           function submit(event) { // this needs to be available on global scope (window)
-                            console.log(event.response_id)
-                            $.get('{{url('nice')}}',{'_token':'{{csrf_token()}}',respond:event.response_id,user:'{{auth()->user()->id}}'})
-                            // $.post(`{{url('submission/form')}}`,{'_token':'{{csrf_token()}}',respond:event.response_id,user:'{{auth()->user()->id}}'})
+                            // console.log(event.response_id)
+                            $.post(`{{url('submission/form')}}`,{'_token':'{{csrf_token()}}',respond:event.response_id,id:'{{auth()->user()->id}}'})
                             .done(function(e){
                               console.log(e);
+                              location.reload();
                             })
                             //ajax post
                             // done refresh
@@ -125,5 +126,13 @@ $('#clock').countdown('2021/11/13 13:00:00')
     .parent().addClass('disabled');
 
 });
+
+// function postevent(){
+//   // $.post(`{{url('submission/form')}}`,{'_token':'{{csrf_token()}}',respond:event.response_id,user:'{{auth()->user()->id}}'})
+//   $.post(`{{url('submission/form')}}`,{'_token':'{{csrf_token()}}',respond:'12',id:'{{auth()->user()->id}}'})
+//   .done(function(e){
+//     console.log(e);
+//   })
+// }
     </script>
         @endsection
