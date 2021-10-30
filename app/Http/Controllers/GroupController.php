@@ -51,7 +51,7 @@ class GroupController extends Controller
         $group->team_members=$request->team_members;
         $group->category=$request->category;
         $group->save();
-        $group->name=$request->category.''.str_pad($group->id, 4, "0", STR_PAD_LEFT);
+        $group->name=$request->category.''.str_pad($group->id, 3, "0", STR_PAD_LEFT);
         $group->save();
         
         return redirect()->route('group.index');

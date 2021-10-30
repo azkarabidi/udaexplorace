@@ -25,7 +25,7 @@ Route::get('/', function () {
     // return hompage if auth
 });
 
-Auth::routes();
+Auth::routes(['register'=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::resource('group',App\Http\Controllers\GroupController::class);

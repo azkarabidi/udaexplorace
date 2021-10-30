@@ -52,20 +52,26 @@
                                     <div class="col-md-2">
                                         <div class="card m-b-20" style="min-width: 250px;">
                                         <div class="col-md-12" style="margin-top: 30px;">
-                                        <h1 class="mt-0 m-b-30 header-title" style="font-size: 30px;font-family: 'Poppins';font-weight: 900;">Group P001</h1>
-                                        <p>
-                                            <b>Team Leader:</b><br>
-                                            Haziq Asyraf Bin Marzuki<br><br>
-        
-                                            <b>Team Assistant:</b><br>
-                                            Haziq Asyraf Bin Marzuki<br><br>
-        
-                                            <b>Team Member 3:</b><br>
-                                            Haziq Asyraf Bin Marzuki<br><br>
-        
-                                            <b>Team Member 4:</b><br>
-                                            Haziq Asyraf Bin Marzuki<br><br>
-                                        </p>
+                                            @if(!empty(auth()->user()->group))
+                                            
+                                            <h1 class="mt-0 m-b-30 header-title" style="font-size: 30px;font-family: 'Poppins';font-weight: 900;">Group {{auth()->user()->group->name}}</h1>
+                                            <p>
+                                                <b>Team Leader:</b><br>
+                                                Haziq Asyraf Bin Marzuki<br><br>
+            
+                                                <b>Team Assistant:</b><br>
+                                                Haziq Asyraf Bin Marzuki<br><br>
+            
+                                                <b>Team Member 3:</b><br>
+                                                Haziq Asyraf Bin Marzuki<br><br>
+            
+                                                <b>Team Member 4:</b><br>
+                                                Haziq Asyraf Bin Marzuki<br><br>
+                                            </p>    
+                                            @else
+                                            
+                                            @endif
+                                       
                                     </div>
                                     </div>
                                     </div>
