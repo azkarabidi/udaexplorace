@@ -1,0 +1,413 @@
+/*
+* Custom CSS
+* National Esports Development Platform
+* Kitamen / MDEC / ESM
+
+/* */
+
+.table{
+  font-size: 16px;
+}
+
+.navbar-custom{
+  margin-left: 0px !important;
+}
+@media (max-width:960px) {
+      .hidemobile{
+        display: none;
+      }
+
+    }
+@media only screen and (min-width: 960px) {
+.hidedesktop{display:none;}
+}
+
+.whatsapptitle{
+  font-size:16px;
+  font-weight: 800;
+  
+}
+
+.whatsapdesc{
+  margin-top: 15px;
+  font-size: 14px;
+  
+}
+
+.address{
+  font-size:14px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.card{
+  border-radius: 20px;
+}
+.bold700{
+  font-weight: 700;
+}
+
+
+.bold400{
+  font-weight: 400;
+}
+
+.mg-b-30-t-b{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.mg-20{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mg-30{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.mg-10{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mg-b-30{
+  margin-bottom: 20px;
+}
+
+.mg-b-5{
+  margin-bottom: 5px;
+}
+
+.tablehead {
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+.eventlogo{
+  width: 95px;
+}
+
+.eventdetails{
+  font-size: 16px;
+  text-align: justify;
+}
+.border20{
+  border-radius: 20px;
+}
+
+.justify{
+  text-align: justify!important;
+}
+
+.eventheader{
+  color: #fff !important;
+}
+
+.eventsub{
+  color: #fff !important;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.filters {
+  text-align: center;
+}
+
+.grid a {
+  width: 200px;
+  height: 160px;
+  display: inline-block;
+  margin: 15px;
+}
+.grid a.type1 {
+  background-color: red;
+}
+.grid a.type2 {
+  background-color: blue;
+}
+.grid a.type3 {
+  background-color: green;
+}
+/*<!-- -->*/
+
+.td a {
+  width: 100%;
+  display: block;
+}
+
+.tablehead {
+  font-weight: 800 !important;
+}
+
+.uploadprofilepic{
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.mg-b-100{
+  margin-bottom: 100px;
+}
+
+.card-shadow {
+    box-shadow: 0 14px 28px rgba(0,0,0,.18), 0 10px 10px transparent;
+}
+
+.maincard {
+  border-radius: 10px;
+  background-color: .fff;
+  margin-bottom: 20px; 
+  margin-top: -350px;
+}
+
+.aligncenter {
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+
+.top-banner {
+	background-color: #fff;
+	background-image: url(../../img/top-bg.png);
+	background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.top-banner-event {
+  background-color: #fff;
+  background-image: url(../../img/top-bg-event.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.top-banner-facilities {
+  background-color: #fff;
+  background-image: url(../../img/top-bg-facilities.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.page-title {
+	text-align: center;
+	margin-top: -330px;
+	color: .fff;
+	text-shadow: 2px 2px .001737;
+	margin-bottom: 30px;
+	font-family: 'Exo', sans-serif;
+	font-weight: 900;
+}
+
+.card-header-custom {
+  /* Style */
+  height: 64px;
+  line-height: 64px;
+  padding: 12px;
+  box-sizing: border-box;
+  /* Actual logic */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-header-custom div:last-child {
+  text-align: right;
+}
+
+.card-header-custom div {
+  flex: 1 1 auto;
+}
+
+.exo {
+	font-family: exo, sans-serif;
+	font-weight: 900;
+}
+
+.gameid {
+	font-size: 16px;
+	margin-top: -10px;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+.font12{
+	font-size: 12px;
+}
+
+.font14{
+	font-size: 14px;
+}
+
+.font16{
+	font-size: 16px;
+}
+
+.font18{
+	font-size: 18px;
+}
+
+.font20{
+	font-size:20px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  margin: 50px auto;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 1px 1px 15px -5px black;
+  transition: all .3s ease;
+}
+.avatar-wrapper:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.avatar-wrapper:hover .profile-pic {
+  opacity: .5;
+}
+.avatar-wrapper .profile-pic {
+  height: 100%;
+  width: 100%;
+  transition: all .3s ease;
+}
+.avatar-wrapper .profile-pic:after {
+  font-family: FontAwesome;
+  content: "\f007";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  font-size: 190px;
+  background: #ecf0f1;
+  color: #34495e;
+  text-align: center;
+}
+.avatar-wrapper .upload-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.avatar-wrapper .upload-button .fa-arrow-circle-up {
+  position: absolute;
+  font-size: 234px;
+  top: -17px;
+  left: 0;
+  text-align: center;
+  opacity: 0;
+  transition: all .3s ease;
+  color: #34495e;
+}
+.avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+  opacity: .9;
+}
+
+.badge-dota2 {
+    color: #fff;
+    background-color: #000;
+}
+
+.badge-mlbb {
+    color: #fff;
+    background-color: #000;
+}
+
+.badge-starcraft {
+    color: #fff;
+    background-color: #000;
+}
+
+
+button {
+  cursor: pointer;
+  outline: none;
+    &.outline {
+        position: relative;
+        z-index: 3;
+        background: transparent;
+        color: #1172c4;
+        font-size: 14px;
+        border-color: #1172c4;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 22px;
+        padding: 10px 40px;
+        text-transform: uppercase;
+        transition: all 0.2s linear;
+        a {
+            text-decoration: none;
+        }
+    }
+    &.outline:hover {
+        color: white;
+        background: #1172c4;
+        border-color: white;
+        transition: all 0.2s linear;
+    }
+    &.outline:active {
+        border-radius: 22px;
+    }
+    &.white-blue {
+        font-weight: 700;
+        color: #00aeef;
+        border-color: white;
+        background: white;
+    }
+  }
+
+  .nedpfooter {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
+   background:#6cf;
+}
+
+.border0{
+  border:0px;
+}
+
+.imgauto {
+  height: auto;
+  width: 100%;
+}
+
+
+.whitetext {
+  color: #fff;
+}

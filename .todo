@@ -5,3 +5,6 @@ Group
 
 Middleware
     check route only auth and with persmission can enter
+
+check user /api get back all respondend data
+

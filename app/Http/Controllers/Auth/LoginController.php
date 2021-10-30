@@ -61,4 +61,7 @@ class LoginController extends Controller
                 ->withErrors('Email-Address/Username And Password Not Match');
         }
     }
+    public function showLoginForm(){
+        return view('auth.loginnew');
+    }
 }

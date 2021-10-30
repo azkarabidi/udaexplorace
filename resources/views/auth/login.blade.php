@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                @foreach ($errors->all() as $error)
-    {{ $error }}<br/>
-@endforeach
+            @foreach ($errors->all() as $error)
+            {{ $error }}<br/>
+            @endforeach
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
