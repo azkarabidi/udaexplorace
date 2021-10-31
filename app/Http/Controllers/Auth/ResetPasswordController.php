@@ -29,13 +29,13 @@ class ResetPasswordController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    public function showResetForm(Request $request)
-{
-    $token = $request->route()->parameter('token');
+//     public function showResetForm(Request $request)
+// {
+//     $token = $request->route()->parameter('token');
 
-    return view('auth.passwords.resetnew')->with(
-        ['token' => $token]
-    );
-        // return view('auth.passwords.resetnew',);
-    }
+//     return view('auth.passwords.resetnew')->with(
+//         ['token' => $token]
+//     );
+//         // return view('auth.passwords.resetnew',);
+//     }
 }

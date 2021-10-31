@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class GroupController extends Controller
 {
@@ -193,8 +194,17 @@ class GroupController extends Controller
         //check group
         if($user->group->form_submit == NULL){
             //update and return save
+            
+            
+            //http client
+            // $response = Http::withToken('5nyoyXQWvYnZWSBHwumKaHPLavmXqUeFPw3813HcasHF')->
+            // get('https://api.typeform.com/forms/TO6Gc4DB/responses?included_response_ids='.$request->respond);
+            // $nice =$response->object(); 
+
+
             $group=Group::find($user->group->id);
             $group->form_submit=$request->respond;
+            // $group->outcome=$nice->items;
             $group->save();
             return response()->json(['message','Done']);
         }else{
