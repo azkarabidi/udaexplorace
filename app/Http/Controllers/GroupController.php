@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class GroupController extends Controller
 {
@@ -43,18 +44,79 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+
+            // dd($request->all());
+            
+        //validate request
+
+        // save new user for team leader 
+        // save user for team assistant
+        // member 3 and 4
+        //cretea group
+        // assign user with group
+        //only admin can change
+        if(auth()->user()->is_admin == true){
         $validated = $request->validate([   
-                'team_members'=>'required',                
-                'category'=>'required',                
+            'team_leader_name'=>'required',          
+            'team_leader_email'=>'required|string|email|max:255|unique:users,email',          
+            'team_leader_password'=>'required',
+            'team_assistant_name'=>'required',
+            'team_assistant_email'=>'required |string | email | max:255 | unique:users,email',
+            'team_assistant_password'=>'required',
+            'team_member_3'=>'required',      
+            'team_member_4'=>'required',      
+            'category'=>'required',                
         ]);
+        //create user 
+        // dd($request->all());
+            $teamleader = new User;
+            $teamleader->name = $request->team_leader_name ;
+            $teamleader->email = $request->team_leader_email;
+            $teamleader->password = Hash::make($request->team_leader_password);
+            $teamleader->save();
+            //create team assistant
+            $teamassitant = new User;
+            // $teamassitant->username = new User;
+            $teamassitant->name = $request->team_assistant_name;
+            $teamassitant->email = $request->team_assistant_email;
+            $teamassitant->password = Hash::make($request->team_assistant_password) ;
+            $teamassitant->save();
+
+
+        //create group
         $group=new Group;
-        $group->team_members=$request->team_members;
+        // //save team members base on full value of team 
+        $group->team_members='  <p>
+        <b>Team Leader:</b><br>
+        '.$request->team_leader_name.'<br><br>
+
+         <b>Team Assistant:</b><br>
+         '.$request->team_assistant_name.'<br><br>
+
+        <b>Team Member 3:</b><br>
+            '.$request->team_member_3.'<br><br>
+
+        <b>Team Member 4:</b><br>
+        '.$request->team_member_4.'<br><br>
+        </p> ';
         $group->category=$request->category;
         $group->save();
         $group->name=$request->category.''.str_pad($group->id, 3, "0", STR_PAD_LEFT);
         $group->save();
+
+        // addteam leader and assistand to group
+        $teamleader->group_id=$group->id;
+        $teamassitant->group_id=$group->id;
+        //set username;
+        $teamleader->username = $request->team_leader_name.'_'.$group->name;
+        $teamassitant->username = $request->team_assistant_name.'_'.$group->name;
+        $teamleader->save();
+        $teamassitant->save();
         
-        return redirect()->route('group.index');
+        return redirect()->route('group.index')->with('message','Success Create Group and User Team');
+    }else{
+        return abort(403);
+    }
     }
 
     /**

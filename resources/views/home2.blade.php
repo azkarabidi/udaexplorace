@@ -55,19 +55,7 @@
                                             @if(!empty(auth()->user()->group))
                                             
                                             <h1 class="mt-0 m-b-30 header-title" style="font-size: 30px;font-family: 'Poppins';font-weight: 900;">Group {{auth()->user()->group->name}}</h1>
-                                            <p>
-                                                <b>Team Leader:</b><br>
-                                                Haziq Asyraf Bin Marzuki<br><br>
-            
-                                                <b>Team Assistant:</b><br>
-                                                Haziq Asyraf Bin Marzuki<br><br>
-            
-                                                <b>Team Member 3:</b><br>
-                                                Haziq Asyraf Bin Marzuki<br><br>
-            
-                                                <b>Team Member 4:</b><br>
-                                                Haziq Asyraf Bin Marzuki<br><br>
-                                            </p>    
+                                               {!! auth()->user()->group->team_members !!}
                                             @else
                                             
                                             @endif

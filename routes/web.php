@@ -15,17 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    //return login if not auth
     if (auth()->user()) 
     {
          return redirect(route('home'));
     }
            return redirect(route('login'));    
-    // return hompage if auth
 });
 
-Auth::routes(['register'=>false]);
+Auth::routes(
+    // ['register'=>false]
+);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::resource('group',App\Http\Controllers\GroupController::class);
@@ -33,3 +32,9 @@ Route::get('group/{group}/assignpage',[App\Http\Controllers\GroupController::cla
 Route::post('group/assignuser',[App\Http\Controllers\GroupController::class,'assign_group_with_user'])->name('assign.user');
 Route::get('nice',function(Request $request){return response()->json($request->all());});
 Route::post('submission/form',[App\Http\Controllers\GroupController::class,'UpdateGroupForm']);
+
+Route::get('inilah',function(){
+    $response = Http::withToken('5nyoyXQWvYnZWSBHwumKaHPLavmXqUeFPw3813HcasHF')->get('https://api.typeform.com/forms/TO6Gc4DB/responses?included_response_ids=a0cihg7s9udk3jyy8fa0cihgbw9bv2ct');
+    dd($response->json());
+
+});

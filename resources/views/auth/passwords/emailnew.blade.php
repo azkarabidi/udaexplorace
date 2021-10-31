@@ -11,14 +11,16 @@
         <div class="card-body">
 
             <h3 class="text-center m-50">
-                <a href="index.html" class="logo logo-admin"><img src="{{asset('udatemp/assets/images/logo-light.png')}}" height="80" alt="logo"></a>
+                <a href="#" class="logo logo-admin"><img src="{{asset('udatemp/assets/images/logo-light.png')}}" height="80" alt="logo"></a>
             </h3>
 
             <div class="p-3">
                 <h4 class="text-muted font-18 mb-3 text-center">Reset Password</h4>
-                {{-- <div class="alert alert-info" role="alert">
-                    Enter your Email and instructions will be sent to you!
-                </div> --}}
+                @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
 
                 <form class="form-horizontal m-t-30" method="POST" action="{{ route('password.email') }}">
                         @csrf
