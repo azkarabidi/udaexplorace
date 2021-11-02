@@ -197,15 +197,16 @@ class GroupController extends Controller
             
             
             //http client
-            // $response = Http::withToken('5nyoyXQWvYnZWSBHwumKaHPLavmXqUeFPw3813HcasHF')->
-            // get('https://api.typeform.com/forms/TO6Gc4DB/responses?included_response_ids='.$request->respond);
-            // $nice =$response->object(); 
+            $response = Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->
+            get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$request->respond);
+            $nice =$response->object(); 
 
 
             $group=Group::find($user->group->id);
             $group->form_submit=$request->respond;
-            // $group->outcome=$nice->items;
+            // $group->outcome=$nice->items['calculated'];
             $group->save();
+            // return response()->json(foreach($nice->items as $a);
             return response()->json(['message','Done']);
         }else{
             //response already have data and thanks
