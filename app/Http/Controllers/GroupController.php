@@ -88,17 +88,17 @@ class GroupController extends Controller
         $group=new Group;
         // //save team members base on full value of team 
         $group->team_members='  <p>
-        <b>Team Leader:</b><br>
-        '.$request->team_leader_name.'<br><br>
+        <b>Team Leader:</b>
+        '.$request->team_leader_name.'<br>
 
-         <b>Team Assistant:</b><br>
-         '.$request->team_assistant_name.'<br><br>
+         <b>Team Assistant:</b>
+         '.$request->team_assistant_name.'<br>
 
-        <b>Team Member 3:</b><br>
-            '.$request->team_member_3.'<br><br>
+        <b>Team Member 3:</b>
+            '.$request->team_member_3.'<br>
 
-        <b>Team Member 4:</b><br>
-        '.$request->team_member_4.'<br><br>
+        <b>Team Member 4:</b>
+        '.$request->team_member_4.'<br>
         </p> ';
         $group->category=$request->category;
         $group->save();
