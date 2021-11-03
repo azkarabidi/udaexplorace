@@ -25,5 +25,10 @@ class Group extends Model
     else{
         return  NULL;
     }
-}
+    }
+    //      public function getOutcomeAttribute($value)
+    // {   
+    //         return json_decode($value);
+    // }
+
 }

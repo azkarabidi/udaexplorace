@@ -193,7 +193,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left" style="background-color: #ededed !important;">
-                    <a href="index.html" class="logo">
+                    <a href="#" class="logo">
                         <span>
                             <img src="{{asset('udatemp/assets/images/logo-light.png')}}" alt="" height="50">
                         </span>
@@ -221,15 +221,37 @@
                 <div class="content">
                     <div class="container-fluid">
 
-                        <div class="row" >
+                        <div class="row text-center" >
                             <div class="col-md-12" >
-                            <div class="card mb-20 p-4" >
+                            {{-- <div class="card mb-20 p-4" >
                                     @if(!empty(auth()->user()->group))
                                     <h1 class="mt-0 m-b-30 header-title" style="font-size: 30px;font-family: 'Poppins';font-weight: 900;">Group {{auth()->user()->group->name}}</h1>
                                        {!! auth()->user()->group->team_members !!}
-
+                                        {{ auth()->user()->group->outcome }}
                                     @endif
 
+                            </div> --}}
+                            <div class="col-md-12" style="margin-top: 30px;">
+                                @if(!empty(auth()->user()->group))
+                                <h1 class="mt-0 m-b-30 header-title" style="font-size: 30px;font-family: 'Poppins';font-weight: 900;">Group {{auth()->user()->group->name}}</h1>
+                                {{-- <p>
+                                    <b>Team Leader:</b>
+                                    Haziq Asyraf Bin Marzuki
+                                    <br>
+                                    <b>Team Assistant:</b>
+                                    Haziq Asyraf Bin Marzuki
+                                    <br>
+                                    <b>Team Members:</b> Haziq Asyraf Bin Marzuki, Haziq Asyraf Bin Marzuki, Haziq Asyraf Bin Marzuki, Haziq Asyraf Bin Marzuki
+                                </p>  --}}
+                                {!! auth()->user()->group->team_members !!}
+                                <p id="blink" style="color:red;font-size: 20px;line-height:1.5rem;font-weight: 800;font-family: 'Poppins';"><b>PLEASE DO NOT CLOSE THIS BROWSER UNTIL YOU HAVE SUBMITTED THE QUIZ</b></p>
+                        <script type="text/javascript">
+                            var blink = document.getElementById('blink');
+                            setInterval(function() {
+                                blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
+                            }, 800);
+                            </script>
+                                @endif
                             </div>
                             </div>
                             </div>
@@ -237,10 +259,32 @@
 
                             <div class="row">
 
+                                @if(!empty(auth()->user()->group))
+                                @if (auth()->user()->group->form_submit == NULL)  
                                     <div class="col- md-12" data-tf-widget="JxX0VQCC" style="width:100%;height:700px;"
                                     data-tf-on-submit="submit"
                                     ></div>
                                     <script src="//embed.typeform.com/next/embed.js"></script>
+                                    <script>
+                                        function submit(event) { // this needs to be available on global scope (window)
+                                          // console.log(event.response_id)
+                                          $.post(`{{url('submission/form')}}`,{'_token':'{{csrf_token()}}',respond:event.response_id,id:'{{auth()->user()->id}}'})
+                                          .done(function(e){
+                                            console.log(e);
+                                            location.reload();
+                                          })
+                                          //ajax post
+                                          // done refresh
+                                        }
+                                      </script>
+                                     
+                                      @else
+                                      <div class="col-md-12 text-center">
+                                          <h1 class="text-uppercase">Thank You For Your Submission</h1>
+
+                                      </div>
+                                          @endif
+                                          @endif
                             </div>
 
 
@@ -249,9 +293,9 @@
 
                 </div> <!-- content -->
 
-                 <footer class="footer">
-                        Copyright of udaamazing50race.my
-                </footer>
+                <footer class="newfooter py-3">
+                    Copyright of udaamazing50race.my
+             </footer>
 
             </div>
 
@@ -264,83 +308,6 @@
         </div>
         <!-- END wrapper -->
 
-        <!-- MODALS -->
-        <div class="col-sm-6 col-md-3 m-t-30">
-            <div class="modal fade newlabel" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body">
-                                                                <div class="col-sm-12">
-                                                                    <h6 class="text-muted">Username</h6>
-                                                                    <input class="form-control" type="text" value="simedarby" id="example-text-input">
-                                                                    <br>
-                                                                    <h6 class="text-muted">Email</h6>
-                                                                    <input class="form-control" type="text" value="admin@simedarby.my" id="example-text-input">
-                                                                    <br>
-                                                                    <h6 class="text-muted">Company</h6>
-                                                                    <input class="form-control" type="text" value="Sime Darby Plantation Sdn Bhd" id="example-text-input">
-                                                                    <br>
-                                                                    <h6 class="text-muted">Password</h6>
-                                                                    <input class="form-control" type="text" value="******" id="example-text-input">
-                                                                    <br>
-                                                                    <h6 class="text-muted">Confirm Password</h6>
-                                                                    <input class="form-control" type="text" value="******" id="example-text-input">
-                                                                    <br>
-                                                                    <h6 class="text-muted">Role</h6>
-                                                                       
-                                                                            <select class="form-control">
-                                                                                <option>Members</option>
-                                                                                <option>Admin</option>
-                                                                            </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mg-10">
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                            <button class="btn btn-success">Add User</button>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal-dialog -->
-                                                </div><!-- /.modal -->
-                                            </div>
-
-        <div class="col-sm-6 col-md-3 m-t-30">
-            <div class="modal fade editpassword" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body">
-                                                                <div class="col-sm-12">
-                                                                    <h6 class="text-muted">Username</h6>
-                                                                    <input class="form-control" type="text" value="simedarby" id="example-text-input">
-                                                                    <br>
-                                                                    <h6 class="text-muted">Email</h6>
-                                                                    <input class="form-control" type="text" value="admin@simedarby.my" id="example-text-input">
-                                                                    <br>
-                                                                    <h6 class="text-muted">Company</h6>
-                                                                    <input class="form-control" type="text" value="Sime Darby Plantation Sdn Bhd" id="example-text-input">
-                                                                    <br>
-                                                                    <h6 class="text-muted">Password</h6>
-                                                                    <input class="form-control" type="text" value="******" id="example-text-input">
-                                                                    <br>
-                                                                    <h6 class="text-muted">Confirm Password</h6>
-                                                                    <input class="form-control" type="text" value="******" id="example-text-input">
-                                                                    <br>
-                                                                    <h6 class="text-muted">Role</h6>
-                                                                       
-                                                                            <select class="form-control">
-                                                                                <option>Members</option>
-                                                                                <option>Admin</option>
-                                                                            </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                            <button class="btn btn-primary">Save</button>
-                                                            <button class="btn btn-danger">Delete User</button>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal-dialog -->
-                                                </div><!-- /.modal -->
-                                            </div>
                                                 
             
 

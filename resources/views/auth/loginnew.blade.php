@@ -4,13 +4,18 @@
 @endsection
 @section('body')
 
+<style>
+    body{
+    background-image: url({{asset('udatemp//assets/images/bgg.jpg')}})
+    }
+</style>
         <div class="wrapper-page">
 
             <div class="card">
                 <div class="card-body">
 
                     <h3 class="text-center m-50">
-                        <a href="#" class="logo logo-admin"><img src="{{asset('udatemp/assets/images/logo-light.png')}}" height="80" alt="logo"></a>
+                        <a href="#" class="logo logo-admin"><img src="{{asset('udatemp/assets/images/mapa-logo.png')}}" height="80" alt="logo"></a>
                     </h3>
 
                     <div class="p-3">
