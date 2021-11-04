@@ -64,8 +64,7 @@ class GroupController extends Controller
             'team_assistant_name'=>'required',
             'team_assistant_email'=>'required |string | email | max:255 | unique:users,email',
             'team_assistant_password'=>'required',
-            'team_member_3'=>'required',      
-            'team_member_4'=>'required',      
+            'team_members'=>'required',      
             'category'=>'required',                
         ]);
         //create user 
@@ -94,11 +93,8 @@ class GroupController extends Controller
          <b>Team Assistant:</b>
          '.$request->team_assistant_name.'<br>
 
-        <b>Team Member 3:</b>
-            '.$request->team_member_3.'<br>
-
-        <b>Team Member 4:</b>
-        '.$request->team_member_4.'<br>
+        <b>Team Members:</b>
+            '.$request->team_members.'<br>
         </p> ';
         $group->category=$request->category;
         $group->save();

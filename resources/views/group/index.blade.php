@@ -94,32 +94,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Team Members 3') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="team" type="text" class="form-control @error('team_member_3') is-invalid @enderror" name="team_member_3" value="{{ old('team_member_3') }}" required autocomplete="team_member_3" autofocus>
-
-                                @error('team_member_3')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Team Member 4') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="team" type="text" class="form-control @error('team_member_4') is-invalid @enderror" name="team_member_4" value="{{ old('team_member_4') }}" required autocomplete="team_member_4" autofocus>
-
-                                @error('team_member_4')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        {{-- <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Team Members') }}</label>
 
                             <div class="col-md-6">
@@ -132,7 +106,7 @@
                                 @enderror
                             </div>
                         </div>
-                 --}}
+           
                         <div class="form-group row">
                             <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Group category') }}</label>
 
