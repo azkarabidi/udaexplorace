@@ -7,6 +7,7 @@ use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class GroupController extends Controller
 {
@@ -188,24 +189,58 @@ class GroupController extends Controller
         $user->form=$request->respond;
         $user->save();
         //check group
-        if($user->group->form_submit == NULL){
+        // if($user->group->form_submit == NULL){
             //update and return save
-            
-            
+
+
+
+
+
+
             //http client
+            // get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$request->respond.'&fields=4K5RrLU7xanC,Wm0xRbr21YnQ');
             $response = Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->
-            get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$request->respond);
+            get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$request->respond.'&fields=4K5RrLU7xanC');
+            $file2 = Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$request->respond.'&fields=Wm0xRbr21YnQ');
             $nice =$response->object(); 
+            $nice2 =$file2->object(); 
+        
+            $folder= Http::withToken('3uDWWkLzsG3NXo2RmgGzSi5Z9gMS6AC5o93SobqxnCFu')->get($nice->items[0]->answers[0]->file_url);
+            $folder2= Http::withToken('3uDWWkLzsG3NXo2RmgGzSi5Z9gMS6AC5o93SobqxnCFu')->get($nice2->items[0]->answers[0]->file_url);
+            $body = $folder->getBody()->getContents();
+            Storage::disk('public')->put('4K5RrLU7xanC'.$request->respond.'.jpeg',$body);
+            $body2 = $folder2->getBody()->getContents();
+            Storage::disk('public')->put('Wm0xRbr21YnQ'.$request->respond.'.jpeg',$body2);
+            
             $group=Group::find($user->group->id);
             $group->form_submit=$request->respond;
             $group->outcome=json_encode($nice->items[0]->calculated);
+            $group->img1='4K5RrLU7xanC'.$request->respond.'.jpeg';
+            $group->img2='Wm0xRbr21YnQ'.$request->respond.'.jpeg';
             $group->save();
-            return response()->json(['message','Done']);
-        }else{
-            //response already have data and thanks
-            return response()->json(['message','Sorry We Already Have Your Group Response']);
-        }
+        
+            // return "<img src=$img alt='ok'>";
+        //    foreach($nice->items[0]->answers )
+
+
+            return response()->json(['message', 'Done']);
+            // return response()->json(['message',$folder]);
+   
+            // }else{
+        //     //response already have data and thanks
+        //     return response()->json(['message','Sorry We Already Have Your Group Response']);
+        // }
         
 
+    }
+
+    public function groupscore(){
+        if(auth()->user()->is_admin == true){
+            $groups=Group::all();
+            return view('group.score',compact('groups'));
+        }
+        else{
+            return abort(403);
+        }
     }
 }
