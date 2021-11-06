@@ -46,8 +46,15 @@
                                                                 <td>{{$item->category}}</td>
                                                                 <td>{{$item->name}}</td>
                                                                 <td>{{$item->outcome}}</td>
-                                                                <td><img style="width:100px;height:100px;" class="img-thumbnail" src="{{ asset('storage/'.$item->img1)}}"></td>
-                                                                <td ><img style="width:100px;height:100px;" class="img-thumbnail" src="{{ asset('storage/'.$item->img2)}}"></td>
+                                                                <td>@if($item->img1 != NULL)
+                                                                    <img style="width:100px;height:100px;" class="img-thumbnail" src="{{ asset('storage/'.$item->img1)}}">
+                                                                    @endif
+                                                                </td>
+                                                            
+                                                                <td >@if($item->img1 != NULL)
+                                                                    <img style="width:100px;height:100px;" class="img-thumbnail" src="{{ asset('storage/'.$item->img2)}}">
+                                                                    @endif
+                                                                </td>
                                                             </tr>
                                                         @empty
                                                             
