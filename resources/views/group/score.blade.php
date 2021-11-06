@@ -47,12 +47,12 @@
                                                                 <td>{{$item->name}}</td>
                                                                 <td>{{$item->outcome}}</td>
                                                                 <td>@if($item->img1 != NULL)
-                                                                    <img style="width:100px;height:100px;" class="img-thumbnail" src="{{ asset('storage/'.$item->img1)}}">
+                                                                    <a href="{{ asset('storage/'.$item->img1)}}">Image</a>
                                                                     @endif
                                                                 </td>
                                                             
                                                                 <td >@if($item->img1 != NULL)
-                                                                    <img style="width:100px;height:100px;" class="img-thumbnail" src="{{ asset('storage/'.$item->img2)}}">
+                                                                    <a href="{{ asset('storage/'.$item->img2)}}">Image2</a>
                                                                     @endif
                                                                 </td>
                                                             </tr>
