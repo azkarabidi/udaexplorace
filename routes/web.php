@@ -33,8 +33,9 @@ Route::post('group/assignuser',[App\Http\Controllers\GroupController::class,'ass
 
 Route::post('submission/form',[App\Http\Controllers\GroupController::class,'UpdateGroupForm']);
 Route::get('score_group',[App\Http\Controllers\GroupController::class,'groupscore']);
+Route::get('score_group/{value}',[App\Http\Controllers\GroupController::class,'groupscorebycategory']);
 
 });
-
+// Route
 
 // Route::get('nice',function(Request $request){return response()->json($request->all());});

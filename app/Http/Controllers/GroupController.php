@@ -20,7 +20,7 @@ class GroupController extends Controller
     {
         if(auth()->user()->is_admin == true){
             
-            $groups=Group::paginate(10);
+            $groups=Group::all()->groupby('category');
             return view('group.index',compact('groups'));
         }else{
             return abort(403);
@@ -90,10 +90,8 @@ class GroupController extends Controller
         $group->team_members='  <p>
         <b>Team Leader:</b>
         '.$request->team_leader_name.'<br>
-
          <b>Team Assistant:</b>
          '.$request->team_assistant_name.'<br>
-
         <b>Team Members:</b>
             '.$request->team_members.'<br>
         </p> ';
@@ -136,7 +134,7 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        //
+        
     }
 
     /**
@@ -195,7 +193,8 @@ class GroupController extends Controller
 
 
 
-
+            //last PHyyOrhIOMec
+            // pantun 7ig9XUNUxoDS
 
             //http client
             // get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$request->respond.'&fields=4K5RrLU7xanC,Wm0xRbr21YnQ');
@@ -242,5 +241,14 @@ class GroupController extends Controller
         else{
             return abort(403);
         }
+    }
+    public function groupscorebycategory($value){
+        if(auth()->user()->is_admin == true){
+        $groups=Group::where('category',$value)->get();
+        return view('group.score',compact('groups'));
+    }
+    else{
+        return abort(403);
+    }
     }
 }

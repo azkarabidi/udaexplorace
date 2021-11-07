@@ -35,6 +35,7 @@
                                                             <th>CATEGORY</th>
                                                             <th>GROUP</th>
                                                             <th>SCORE</th>
+                                                            <th>pantun</th>
                                                             <th>FILE UPLOAD 1</th>
                                                             <th>FILE UPLOAD 2</th>
                                                         </tr>
@@ -42,17 +43,18 @@
                                                     <tbody style="color:#000;font-family:Arial;font-size:16px;">
                                                         @forelse ($groups as $item)
                                                             <tr>
-                                                                <td></td>
+                                                                <td>{{$item->updated_at->format('d M Y  h:m')}}</td>
                                                                 <td>{{$item->category}}</td>
                                                                 <td>{{$item->name}}</td>
                                                                 <td>{{$item->outcome}}</td>
+                                                                <td>{{$item->pantun}}</td>
                                                                 <td>@if($item->img1 != NULL)
-                                                                    <a href="{{ asset('storage/'.$item->img1)}}">Image</a>
+                                                                    <a target="_blank" href="{{ asset('storage/'.$item->img1)}}" >Image</a>
                                                                     @endif
                                                                 </td>
                                                             
                                                                 <td >@if($item->img1 != NULL)
-                                                                    <a href="{{ asset('storage/'.$item->img2)}}">Image2</a>
+                                                                    <a target="_blank" href="{{ asset('storage/'.$item->img2)}}">Image2</a>
                                                                     @endif
                                                                 </td>
                                                             </tr>

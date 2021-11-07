@@ -142,7 +142,7 @@
         <div class="col-md-8">
             <div class="card">
                 <h4 class="card-header">List Of Group</h4>
-                @foreach ($groups as $item)
+                {{-- @foreach ($groups as $item)
                     <div class="card-body">
                         {{$item->id.' '. $item->name}} <br>
                         {{$item->category}}
@@ -155,10 +155,23 @@
                         <a href="{{url('group/'.$item->id.'/assignpage')}}">
                             Assign
                         </a>
-                        @endforelse
+                        @endforelse 
                     </div>
                     <hr>
-                @endforeach
+                 @endforeach --}}
+                 <div class="card-body p-2">
+                     @foreach ($groups as $group)
+                        @forelse ($group as $item)
+                        {{$item->category}}
+                        {{ $item->name}} <br>
+                        {!! $item->team_members !!}
+                        @empty
+                        @endforelse 
+                       <br><hr>
+                        
+                     @endforeach
+                 </div>
+               
             </div>
         </div>
     </div>

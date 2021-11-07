@@ -202,7 +202,6 @@
                         </i>
                     </a>
                 </div>
-
                 <div class="navbar-right float-right mb-0" style="background-color: red;padding: 0px 15px 0px 15px;color: #fff;">
                      <p style="font-size:12px;margin-bottom: -5px;font-weight: 700;">COUNTDOWN TO FINISH TIME</span><br>
                     <h1 style="font-size:40px;font-weight: 800;margin: 0px;" id="demo"> 00:00:00</h1>
@@ -220,29 +219,39 @@
                 <!-- Start content -->
                 <div class="content">
                     <div class="container-fluid">
-
+                        @if(auth()->user()->is_admin==1)
                         <div class="row text-center" >
                             <div class="col-md-12" >
-                            {{-- <div class="card mb-20 p-4" >
-                                    @if(!empty(auth()->user()->group))
-                                    <h1 class="mt-0 m-b-30 header-title" style="font-size: 30px;font-family: 'Poppins';font-weight: 900;">Group {{auth()->user()->group->name}}</h1>
-                                       {!! auth()->user()->group->team_members !!}
-                                        {{ auth()->user()->group->outcome }}
-                                    @endif
-
-                            </div> --}}
+                                <div class="card">
+                                    <h2 class="card-header">Admin</h2>
+                                    <div class="card-body text-center">
+                                        <a class="btn btn-primary" href="{{url('group')}}">Create Group</a>
+                                        <a class="btn btn-primary" href="{{url('score_group')}}">Group Score</a>
+                                      
+                                        <div class="topbar-center">
+                                            <a class="decoration-none btn btn-danger"  href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                          document.getElementById('logout-form').submit();">
+                                             {{ __('Logout') }}
+                                         </a>
+                        
+                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                             @csrf
+                                         </form>
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        <div class="row text-center" >
+                            <div class="col-md-12" >
+                      
                             <div class="col-md-12" style="margin-top: 30px;">
                                 @if(!empty(auth()->user()->group))
                                 <h1 class="mt-0 m-b-30 header-title" style="font-size: 30px;font-family: 'Poppins';font-weight: 900;">Group {{auth()->user()->group->name}}</h1>
-                                {{-- <p>
-                                    <b>Team Leader:</b>
-                                    Haziq Asyraf Bin Marzuki
-                                    <br>
-                                    <b>Team Assistant:</b>
-                                    Haziq Asyraf Bin Marzuki
-                                    <br>
-                                    <b>Team Members:</b> Haziq Asyraf Bin Marzuki, Haziq Asyraf Bin Marzuki, Haziq Asyraf Bin Marzuki, Haziq Asyraf Bin Marzuki
-                                </p>  --}}
+                            
                                 {!! auth()->user()->group->team_members !!}
                                 <p id="blink" style="color:red;font-size: 20px;line-height:1.5rem;font-weight: 800;font-family: 'Poppins';"><b>PLEASE DO NOT CLOSE THIS BROWSER UNTIL YOU HAVE SUBMITTED THE QUIZ</b></p>
                         <script type="text/javascript">
