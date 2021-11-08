@@ -4,6 +4,9 @@
 @section('content')
 
 <div class="container">
+    @if(Session::has('message'))
+<p class="alert alert-info">{{ Session::get('message') }}</p>
+@endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -142,29 +145,16 @@
         <div class="col-md-8">
             <div class="card">
                 <h4 class="card-header">List Of Group</h4>
-                {{-- @foreach ($groups as $item)
-                    <div class="card-body">
-                        {{$item->id.' '. $item->name}} <br>
-                        {{$item->category}}
-                        <br>
-
-                        {{$item->team_members}}
-                        @forelse($item->user as $user)
-                        <br> User Assign{{$user->name}}
-                        @empty           
-                        <a href="{{url('group/'.$item->id.'/assignpage')}}">
-                            Assign
-                        </a>
-                        @endforelse 
-                    </div>
-                    <hr>
-                 @endforeach --}}
+            
                  <div class="card-body p-2">
                      @foreach ($groups as $group)
                         @forelse ($group as $item)
                         {{$item->category}}
                         {{ $item->name}} <br>
                         {!! $item->team_members !!}
+                        <a href="{{url('group/'.$item->id.'/delete')}}" class="btn btn-danger">Delete group</a>
+                        <br><br>
+                        
                         @empty
                         @endforelse 
                        <br><hr>

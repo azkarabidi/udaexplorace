@@ -55,6 +55,9 @@ return [
         'sendgrid' => [
              'transport' => 'sendgrid',
         ],
+        'mailersend' => [
+            'transport' => 'mailersend',
+        ],
 
         'postmark' => [
             'transport' => 'postmark',

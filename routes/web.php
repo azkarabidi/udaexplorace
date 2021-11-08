@@ -27,7 +27,8 @@ Auth::routes(
 );
 Route::middleware(['auth'])->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('group',App\Http\Controllers\GroupController::class);
+Route::resource('group',App\Http\Controllers\GroupController::class,['only'=>['store','index']]);
+Route::get('group/{group}/delete',[App\Http\Controllers\GroupController::class,'destroy'])->name('group.delete');
 Route::get('group/{group}/assignpage',[App\Http\Controllers\GroupController::class,'assignpage']);
 Route::post('group/assignuser',[App\Http\Controllers\GroupController::class,'assign_group_with_user'])->name('assign.user');
 

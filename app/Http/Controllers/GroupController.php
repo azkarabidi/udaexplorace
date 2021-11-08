@@ -157,7 +157,13 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        //
+        if(auth()->user()->is_admin == true){
+        $group->delete();
+        return redirect()->route('group.index')->with('message','Success Delete Group');
+        } else{
+            return abort(403);
+        }
+
     }
 
     public function assign_group_with_user(Request $request){
@@ -169,7 +175,7 @@ class GroupController extends Controller
         $user->group_id=$request->group_id;
         $user->save();
         
-     return redirect()->route('group.index')->with('assiign user with the group');
+     return redirect()->route('group.index')->with('message','assiign user with the group');
     }
 
     public function assignpage(Group $group)

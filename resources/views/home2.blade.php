@@ -226,7 +226,9 @@
                                     <h2 class="card-header">Admin</h2>
                                     <div class="card-body text-center">
                                         <a class="btn btn-primary" href="{{url('group')}}">Create Group</a>
-                                        <a class="btn btn-primary" href="{{url('score_group')}}">Group Score</a>
+                                        <a class="btn btn-primary" href="{{url('score_group/U')}}">Group UDA</a>
+                                        <a class="btn btn-primary" href="{{url('score_group/A')}}">Group AFFILLLIATE</a>
+                                        <a class="btn btn-primary" href="{{url('score_group/P')}}">Group PUBLIC</a>
                                       
                                         <div class="topbar-center">
                                             <a class="decoration-none btn btn-danger"  href="{{ route('logout') }}"
@@ -372,7 +374,7 @@
                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                            
                            // Output the result in an element with id="demo"
-                           document.getElementById("demo").innerHTML =  hours + "H "
+                           document.getElementById("demo").innerHTML =hours + "H "
                            + minutes + "M " + seconds + "S " ;
                            
                            // If the count down is over, write some text 
