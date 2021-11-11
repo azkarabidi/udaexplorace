@@ -116,7 +116,7 @@
                             <div class="col-md-6">
                                 <select class="form-control" name="category">
                                     <option value="U">Uda </option>
-                                    <option value="A">Affiliate </option>
+                                    <option value="M">Media </option>
                                     <option value="P">Public </option>
                                     <option value="T">Test</option>
                                 </select>

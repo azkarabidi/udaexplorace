@@ -227,7 +227,7 @@
                                     <div class="card-body text-center">
                                         <a class="btn btn-primary" href="{{url('group')}}">Create Group</a>
                                         <a class="btn btn-primary" href="{{url('score_group/U')}}">Group UDA</a>
-                                        <a class="btn btn-primary" href="{{url('score_group/A')}}">Group AFFILLLIATE</a>
+                                        <a class="btn btn-primary" href="{{url('score_group/M')}}">Group Media</a>
                                         <a class="btn btn-primary" href="{{url('score_group/P')}}">Group PUBLIC</a>
                                       
                                         <div class="topbar-center">
@@ -272,7 +272,7 @@
 
                                 @if(!empty(auth()->user()->group))
                                 @if (auth()->user()->group->form_submit == NULL)  
-                                    <div class="col- md-12" data-tf-widget="JxX0VQCC" style="width:100%;height:700px;"
+                                    <div class="col- md-12" data-tf-widget="U9a2ajhV" style="width:100%;height:700px;"
                                     data-tf-on-submit="submit"
                                     ></div>
                                     <script src="//embed.typeform.com/next/embed.js"></script>
