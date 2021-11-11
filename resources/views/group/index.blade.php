@@ -118,6 +118,7 @@
                                     <option value="U">Uda </option>
                                     <option value="A">Affiliate </option>
                                     <option value="P">Public </option>
+                                    <option value="T">Test</option>
                                 </select>
                                 @error('category')
                                     <span class="invalid-feedback" role="alert">

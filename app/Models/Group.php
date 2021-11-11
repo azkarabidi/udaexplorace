@@ -17,10 +17,11 @@ class Group extends Model
             return 'UDA';
         }else if($value == 'P'){
             return 'Public';
-            
         }else if($value =='A'){
-
             return 'Affiliate';
+        }
+        else if($value =='T'){
+            return 'Test';
         }
     else{
         return  NULL;

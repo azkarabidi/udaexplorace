@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Group;
+use App\Jobs\UpateGroupData;
 use Illuminate\Http\Request;
+use App\Jobs\SendEmailToNewUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +38,14 @@ Route::post('group/assignuser',[App\Http\Controllers\GroupController::class,'ass
 Route::get('score_group',[App\Http\Controllers\GroupController::class,'groupscore']);
 Route::get('score_group/{value}',[App\Http\Controllers\GroupController::class,'groupscorebycategory']);
 Route::post('submission/form',[App\Http\Controllers\GroupController::class,'UpdateGroupForm']);
+
+
 });
+// Route::get('jobadd',function(){
+//     $group=Group::find(6);
+//     // dd($group);
+//     // dispatch(new PullRespondData($group));
+//     // SendEmailToNewUser::dispatch();
+//         UpateGroupData::dispatch($group);
+//     return 'nice';
+// });
