@@ -272,8 +272,7 @@
 
                                 @if(!empty(auth()->user()->group))
                                 @if (auth()->user()->group->form_submit == NULL)  
-                                    {{-- <div class="col- md-12" data-tf-widget="U9a2ajhV" style="width:100%;height:700px;" --}}
-                                    <div class="col- md-12" data-tf-widget="JxX0VQCC" style="width:100%;height:700px;"
+                                    <div class="col- md-12" data-tf-widget="U9a2ajhV" style="width:100%;height:700px;"
                                     data-tf-on-submit="submit"
                                     ></div>
                                     <script src="//embed.typeform.com/next/embed.js"></script>

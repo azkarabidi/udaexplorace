@@ -197,27 +197,9 @@ class GroupController extends Controller
         if($user->group->form_submit == NULL){
             //update and return save
 
-            // $response = Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->
-            // get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$request->respond.'&fields=4K5RrLU7xanC');
-            // $file2 = Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$request->respond.'&fields=Wm0xRbr21YnQ');
-            // $nice =$response->object(); 
-            // $nice2 =$file2->object(); 
-            // $folder= Http::withToken('3uDWWkLzsG3NXo2RmgGzSi5Z9gMS6AC5o93SobqxnCFu')->get($nice->items[0]->answers[0]->file_url);
-            // $folder2= Http::withToken('3uDWWkLzsG3NXo2RmgGzSi5Z9gMS6AC5o93SobqxnCFu')->get($nice2->items[0]->answers[0]->file_url);
-            // $body = $folder->getBody()->getContents();
-            // Storage::disk('public')->put('4K5RrLU7xanC'.$request->respond.'.jpeg',$body);
-            // $body2 = $folder2->getBody()->getContents();
-            // Storage::disk('public')->put('Wm0xRbr21YnQ'.$request->respond.'.jpeg',$body2);
-            // $pantun = Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->
-            // get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$request->respond.'&fields=7ig9XUNUxoDS');
-            // $pantunobject=$pantun->object();
-            
+                    
             $group=Group::find($user->group->id);
             $group->form_submit=$request->respond;
-            // $group->outcome=json_encode($nice->items[0]->calculated);
-            // $group->img1='4K5RrLU7xanC'.$request->respond.'.jpeg';
-            // $group->img2='Wm0xRbr21YnQ'.$request->respond.'.jpeg';
-            // $group->pantun=$pantunobject->items[0]->answers[0]->text;
             $group->save();
             UpateGroupData::dispatch($group);
 

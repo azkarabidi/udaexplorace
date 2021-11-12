@@ -35,9 +35,11 @@
                                                             <th>CATEGORY</th>
                                                             <th>GROUP</th>
                                                             <th>SCORE</th>
-                                                            <th>pantun</th>
                                                             <th>FILE UPLOAD 1</th>
                                                             <th>FILE UPLOAD 2</th>
+                                                            <th>FILE UPLOAD 3</th>
+                                                            <th>FILE UPLOAD 4</th>
+                                                            <th>FILE UPLOAD 5</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody style="color:#000;font-family:Arial;font-size:16px;">
@@ -47,14 +49,26 @@
                                                                 <td>{{$item->category}}</td>
                                                                 <td>{{$item->name}}</td>
                                                                 <td>{{$item->outcome}}</td>
-                                                                <td>{{$item->pantun}}</td>
+                                                              
                                                                 <td>@if($item->img1 != NULL)
                                                                     <a target="_blank" href="{{ asset('storage/'.$item->img1)}}" >Image</a>
                                                                     @endif
                                                                 </td>
                                                             
-                                                                <td >@if($item->img1 != NULL)
+                                                                <td >@if($item->img2 != NULL)
                                                                     <a target="_blank" href="{{ asset('storage/'.$item->img2)}}">Image2</a>
+                                                                    @endif
+                                                                </td>
+                                                                <td >@if($item->img3 != NULL)
+                                                                    <a target="_blank" href="{{ asset('storage/'.$item->img3)}}">Image3</a>
+                                                                    @endif
+                                                                </td>
+                                                                <td >@if($item->img4 != NULL)
+                                                                    <a target="_blank" href="{{ asset('storage/'.$item->img4)}}">Image4</a>
+                                                                    @endif
+                                                                </td>
+                                                                <td >@if($item->img5 != NULL)
+                                                                    <a target="_blank" href="{{ asset('storage/'.$item->img5)}}">Image5</a>
                                                                     @endif
                                                                 </td>
                                                             </tr>

@@ -35,32 +35,33 @@ class UpateGroupData implements ShouldQueue
     public function handle()
     {
 
+        $response = Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get('https://api.typeform.com/forms/U9a2ajhV/responses?included_response_ids='.$this->group->form_submit);
+        $data=$response->object();
+        $img1=$data->items[0]->answers[8]->file_url;
+        $img2=$data->items[0]->answers[13]->file_url;
+        $img3=$data->items[0]->answers[28]->file_url;
+        $img4=$data->items[0]->answers[31]->file_url;
+        $img5=$data->items[0]->answers[49]->file_url;
+        $imagedata= Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get($img1);
+        $imagedata2= Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get($img2);
+        $imagedata3= Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get($img3);
+        $imagedata4= Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get($img4);
+        $imagedata5= Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get($img5);
+    
+          Storage::disk('public')->put('value-1-'.$this->group->name.'.jpeg',$imagedata->getBody()->getContents());
+          Storage::disk('public')->put('value-2-'.$this->group->name.'.jpeg',$imagedata2->getBody()->getContents());
+          Storage::disk('public')->put('value-3-'.$this->group->name.'.jpeg',$imagedata3->getBody()->getContents());
+          Storage::disk('public')->put('value-4-'.$this->group->name.'.jpeg',$imagedata4->getBody()->getContents());
+          Storage::disk('public')->put('value-5-'.$this->group->name.'.jpeg',$imagedata5->getBody()->getContents());
+   
+            $got=Group::find($this->group->id);
+            $got->outcome=json_encode($data->items[0]->calculated);
+            $got->img1='value-1-'.$this->group->name.'.jpeg';
+            $got->img2='value-2-'.$this->group->name.'.jpeg';
+            $got->img3='value-3-'.$this->group->name.'.jpeg';
+            $got->img4='value-4-'.$this->group->name.'.jpeg';
+            $got->img5='value-5-'.$this->group->name.'.jpeg';
+            $got->save();
 
-
-        //question1
-        $response = Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$this->group->form_submit.'&fields=4K5RrLU7xanC');
-        //file2
-        $file2 = Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$this->group->form_submit.'&fields=Wm0xRbr21YnQ');
-        $nice =$response->object(); 
-        $nice2 =$file2->object(); 
-        //get file url
-        $folder= Http::withToken('3uDWWkLzsG3NXo2RmgGzSi5Z9gMS6AC5o93SobqxnCFu')->get($nice->items[0]->answers[0]->file_url);
-        // get firl url2
-        $folder2= Http::withToken('3uDWWkLzsG3NXo2RmgGzSi5Z9gMS6AC5o93SobqxnCFu')->get($nice2->items[0]->answers[0]->file_url);
-        $body = $folder->getBody()->getContents();
-
-        Storage::disk('public')->put('4K5RrLU7xanC'.$this->group->form_submit.'.jpeg',$body);
-        $body2 = $folder2->getBody()->getContents();
-        Storage::disk('public')->put('Wm0xRbr21YnQ'.$this->group->form_submit.'.jpeg',$body2);
-        $pantun = Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->
-        get('https://api.typeform.com/forms/JxX0VQCC/responses?included_response_ids='.$this->group->form_submit.'&fields=7ig9XUNUxoDS');
-        $pantunobject=$pantun->object();
-
-        $data=Group::find($this->group->id);
-        $data->outcome=json_encode($nice->items[0]->calculated);
-        $data->img1='4K5RrLU7xanC'.$this->group->form_submit.'.jpeg';
-        $data->img2='Wm0xRbr21YnQ'.$this->group->form_submit.'.jpeg';
-        $data->pantun=$pantunobject->items[0]->answers[0]->text;
-        $data->save();
     }
 }
