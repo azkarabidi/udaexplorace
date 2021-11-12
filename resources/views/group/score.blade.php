@@ -45,7 +45,8 @@
                                                     <tbody style="color:#000;font-family:Arial;font-size:16px;">
                                                         @forelse ($groups as $item)
                                                             <tr>
-                                                                <td>{{$item->updated_at->format('d M Y  h:m')}}</td>
+                                                                {{-- <td>{{$item->updated_at->format('d M Y  h:m')}}</td> --}}
+                                                                <td>{{$item->pantun}}</td>
                                                                 <td>{{$item->category}}</td>
                                                                 <td>{{$item->name}}</td>
                                                                 <td>{{$item->outcome}}</td>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Group;
 use App\Jobs\UpateGroupData;
@@ -200,7 +201,9 @@ class GroupController extends Controller
                     
             $group=Group::find($user->group->id);
             $group->form_submit=$request->respond;
+            $group->pantun=Carbon::now()->format('d-m-Y h:m a');
             $group->save();
+
             UpateGroupData::dispatch($group);
 
             return response()->json(['message', 'Done']);
