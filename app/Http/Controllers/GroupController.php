@@ -201,7 +201,7 @@ class GroupController extends Controller
                     
             $group=Group::find($user->group->id);
             $group->form_submit=$request->respond;
-            $group->pantun=Carbon::now()->format('d-m-Y h:m a');
+            // $group->pantun=Carbon::now()->format('d-m-Y h:m a');
             $group->save();
 
             UpateGroupData::dispatch($group);

@@ -42,11 +42,18 @@ Route::get('score_group/{value}',[App\Http\Controllers\GroupController::class,'g
 Route::post('submission/form',[App\Http\Controllers\GroupController::class,'UpdateGroupForm']);
 });
 // Route::get('jobadd',function(){
-//     $group=Group::find(6);
-//     // dd($group);
-//     // dispatch(new PullRespondData($group));
-//     // SendEmailToNewUser::dispatch();
-//         UpateGroupData::dispatch($group);
-//     return 'nice';
+// //     $group=Group::find(6);
+// //     // dd($group);
+// //     // dispatch(new PullRespondData($group));
+// //     // SendEmailToNewUser::dispatch();
+// //         UpateGroupData::dispatch($group);
+// //     return 'nice';
+
+// $response=Http::withToken('Cdwc9bjhyqhSNHM9iEkngFGfbLUFyiGiHiiGF4rXxnQT')->get('https://api.typeform.com/forms/U9a2ajhV/responses?included_response_ids=c1vwk0y4nyzjcrihgn6e2b9cdilaprih');
+// // dd($response->object());
+// $data=$response->object();
+// // echo Carbon\Carbon::createFromFormat('Y-m-d\TH:i:s', '2021-11-13T00:15:32Z')->toDateTimeString();
+// echo  date("Y-m-d H:i:s", strtotime($response->object()->items[0]->submitted_at));
+
 // });
 

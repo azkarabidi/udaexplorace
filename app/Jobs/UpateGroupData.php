@@ -56,6 +56,7 @@ class UpateGroupData implements ShouldQueue
    
             $got=Group::find($this->group->id);
             $got->outcome=json_encode($data->items[0]->calculated);
+            $got->pantun=date("Y-m-d H:i:s", strtotime($data->items[0]->submitted_at));
             $got->img1='value-1-'.$this->group->name.'.jpeg';
             $got->img2='value-2-'.$this->group->name.'.jpeg';
             $got->img3='value-3-'.$this->group->name.'.jpeg';
